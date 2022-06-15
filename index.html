@@ -6,12 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #btn{
+        padding: 10px 20px;
+    }
+    input{
+        padding: 10px 20px;
+    }
+</style>
 <body>
 
     <div id="canvas">
 
     </div>
+
+    <form>
+        <label>Username</label>
+        <br>
+        <input type="text" placeholder="Enter a github repo name" id="username">
+        <button id="btn">Send</button>
+    </form>
     
-    <script src="promiseAssignment.js"></script>
+    <div>
+        <h1>GitHub Contact Information</h1>
+        <label>Name:</label>
+        <h2 id="title"></h2>
+        <label>Company:</label>
+        <h2 id="company"></h2>
+        <label>Location:</label>
+        <h2 id="location"></h2>
+    </div>
+    
+
+    <script type="module" src="promiseAssignment.js"></script>
 </body>
 </html>

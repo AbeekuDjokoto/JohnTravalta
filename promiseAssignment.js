@@ -1,28 +1,28 @@
-let loadPage = () => {
-  const div = document.getElementById("canvas");
-  const img = document.createElement("img");
-  img.src = "./assets/John.gif";
-  div.appendChild(img);
-};
+import { Octokit, App } from "https://cdn.skypack.dev/octokit";
 
-// let sillySignin = () => {
-//   for (let index = 0; index < 10000000000; index++) {}
-//   console.log("SIGNED IN");
-// };
-
-let sillySignin = new Promise((resolve, reject) => {
-    setTimeout(function sillySignin(){
-         for (let index = 0; index < 10000000000; index++) {}
-          console.log("SIGNED IN");
-          resolve('Working')
-       }, 1000)
-          reject('This doesnt work')
-})
+let username = document.getElementById("username");
+let Button = document.getElementById("btn");
+let name = document.getElementById('title')
+let location = document.getElementById('location')
+let company = document.getElementById('company')
+// const { Octokit } = require("octokit");
 
 
-sillySignin.then((result)=>{
-  console.log(`the result was a ${result}`)
-}).catch(function(error){
-  console.log(`the result was a failure ${error}`)
-})
+const octokit = new Octokit();
 
+Button.addEventListener("click", (e) => {
+  e.preventDefault();
+  octokit.rest.users
+    .getByUsername({
+      username: username.value,
+    })
+    .then((info) => {
+      name.innerHTML = info.data.name
+      location.innerHTML = info.data.location
+      company.innerHTML = info.data.company
+      console.log(info)
+    })
+});
+
+
+  
